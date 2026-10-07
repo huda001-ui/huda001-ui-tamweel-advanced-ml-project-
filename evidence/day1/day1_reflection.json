@@ -1,0 +1,18 @@
+{
+  "problem_statement": "Predict whether a loan application will default within 90 days using information available at application time. The model is intended as a teaching example for comparing classification models and supporting a risk-screening decision.",
+  "candidate": "XGBoost",
+  "notes": {
+    "evidence": "XGBoost achieved the highest Average Precision at 0.3338, compared with 0.3258 for Logistic Regression and 0.3248 for LightGBM. Logistic Regression had the highest ROC-AUC at 0.8213, while XGBoost achieved 0.8124.",
+    "limitation": "This experiment uses synthetic data and a random teaching split, so it cannot prove that XGBoost will generalize to real-world loan applications or future populations.",
+    "next_test": "Use customer-level and time-based validation on unseen data and compare calibration, Average Precision, ROC-AUC, and decision costs to determine whether XGBoost remains the preferred model."
+  },
+  "exit_answers": [
+    "Average Precision should be inspected beside ROC-AUC because the positive class is imbalanced. AP focuses on precision and recall for the positive class and provides useful evidence of performance when positive cases are relatively rare.",
+    "The comparison set must remain separate from early stopping so that it provides an independent evaluation. Using it to select the number of boosting rounds would leak evaluation information into model development and make the final comparison optimistic."
+  ],
+  "checkpoint": {
+    "status": "READY_FOR_REVIEW",
+    "missing": [],
+    "automatic_grade": null
+  }
+}

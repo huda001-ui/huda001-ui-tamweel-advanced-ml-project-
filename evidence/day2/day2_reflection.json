@@ -1,0 +1,14 @@
+{
+  "responses": {
+    "leak_example": "days_past_due_60 is a leaked field because it becomes available only after the loan application, so it could not have been known at application time.",
+    "split_reason": "Time ordering evaluates later applications using earlier mature data. Customer separation prevents the same customer from appearing in both training and validation within a fold, and the strict 90-day rule ensures that training labels are fully mature before validation starts.",
+    "observed_gap": "The AP gap between leaky random and clean random was 0.6879, while the AP gap between clean random and honest fixed was -0.0044. These results are specific to these validation protocols and folds, so they do not prove that one approach is universally superior.",
+    "imputer_reason": "Imputation is learned only from the training data to prevent preprocessing leakage. The inner stopping set controls model training and tree selection without using the outer validation data.",
+    "limitations": "The hyperparameter search was limited to eight trials and a 120-second budget. Also, honest OOF predictions cover only 5039 of 10000 rows because the remaining 4961 rows are warm-up observations."
+  },
+  "checkpoint": {
+    "status": "READY_FOR_REVIEW",
+    "missing": [],
+    "automatic_grade": null
+  }
+}
