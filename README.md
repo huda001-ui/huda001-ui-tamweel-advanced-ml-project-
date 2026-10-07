@@ -1,5 +1,13 @@
 # tamweel-advanced-ml-project-
-Huda Makki Mohammed
+
+**Trainee Name:** Huda Makki Mohammed
+
+**Trainee ID:** 211
+
+**Program:** Advanced Machine Learning Methods  
+
+**Program Code:** SDA-DSC-211 
+
 [SDAIA Academy] (https://github.com/SDAIAAcademy)
 
 ## Project Scenario
