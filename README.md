@@ -4,11 +4,13 @@
 
 **Trainee ID:** 211
 
-**Program:** Advanced Machine Learning Methods  
+**Program:** Advanced Machine Learning Methods
 
-**Program Code:** SDA-DSC-211 
+**Program Code:** SDA-DSC-211
 
-[SDAIA Academy] (https://github.com/SDAIAAcademy)
+[SDAIA Academy](https://github.com/SDAIAAcademy)
+
+---
 
 ## Project Scenario
 
@@ -145,7 +147,7 @@ The results demonstrated that the boosting models did not uniformly outperform t
 
 The learning-curve analysis was used to examine model behavior as the amount of training data increased.
 
-![Day 1 Learning Curves](artifacts/day1_learning_curves.png)
+![Day 1 Learning Curves](https://raw.githubusercontent.com/huda001-ui/huda001-ui-tamweel-advanced-ml-project-/main/artifacts/day1_learning_curves.png)
 
 ---
 
@@ -167,7 +169,7 @@ Three forward validation periods were used.
 
 The following visualization shows the growth of mature training data across the forward validation periods and confirms **zero shared customers within each fold**.
 
-![Leakage-Aware Forward Validation](artifacts/day2_fold_sizes.png)
+![Leakage-Aware Forward Validation](https://raw.githubusercontent.com/huda001-ui/huda001-ui-tamweel-advanced-ml-project-/main/artifacts/day2_fold_sizes.png)
 
 A bounded **Optuna** search was used for controlled LightGBM hyperparameter tuning.
 
@@ -209,7 +211,7 @@ Threshold selection therefore considers both:
 
 ROC and Precision-Recall analysis was used alongside the decision-policy evaluation.
 
-![Day 3 ROC and Precision-Recall Analysis](artifacts/day3_roc_pr.png)
+![Day 3 ROC and Precision-Recall Analysis](https://raw.githubusercontent.com/huda001-ui/huda001-ui-tamweel-advanced-ml-project-/main/artifacts/day3_roc_pr.png)
 
 The project also evaluated threshold behavior across time periods and performed descriptive regional diagnostics.
 
@@ -245,7 +247,7 @@ Important local SHAP contributions included:
 
 ## Local SHAP Explanation
 
-![Local SHAP Explanation for TR-009585](artifacts/shap_waterfall.png)
+![Local SHAP Explanation for TR-009585](https://raw.githubusercontent.com/huda001-ui/huda001-ui-tamweel-advanced-ml-project-/main/artifacts/shap_waterfall.png)
 
 SHAP values in this visualization are expressed in **raw log-odds**, not probability points.
 
@@ -297,11 +299,13 @@ across:
 The candidate models included:
 
 ### Single Models
+
 - LightGBM
 - XGBoost
 - Logistic Regression
 
 ### Ensemble Candidates
+
 - Equal Ensemble
 - Weighted Ensemble
 - Stack
@@ -321,7 +325,7 @@ The candidate models included:
 
 ## Final Model & Ensemble Evidence
 
-![Final Model and Ensemble Comparison](artifacts/day5_ensemble_comparison.png)
+![Final Model and Ensemble Comparison](https://raw.githubusercontent.com/huda001-ui/huda001-ui-tamweel-advanced-ml-project-/main/artifacts/day5_ensemble_comparison.png)
 
 ---
 
@@ -495,18 +499,23 @@ The project has several important limitations:
 If this procedure were evaluated in a controlled future setting, monitoring should include:
 
 ### Calibration
+
 Monitor probability reliability using metrics such as Brier Score and ECE when labels become available.
 
 ### Drift
+
 Monitor changes in feature distributions, model scores, and predictive behavior.
 
 ### Capacity
+
 Monitor threshold-eligible and final review rates against the **12% capacity limit**.
 
 ### Regional Diagnostics
+
 Monitor descriptive differences in false-positive rates and recall across regions.
 
 ### Model Performance
+
 Reassess model performance when newly labeled data becomes available.
 
 Material drift, capacity violations, or deterioration in calibration should trigger new development evidence rather than silent threshold changes.
@@ -527,6 +536,8 @@ tamweel/
 │   └── day5_ensemble_comparison.png
 │
 ├── data/
+│
+├── evidence/
 │
 ├── notebooks/
 │   ├── 00_readiness_check.ipynb
@@ -567,21 +578,25 @@ tamweel/
 The project includes four supporting reports.
 
 ### Model Card
+
 `reports/MODEL_CARD.md`
 
 Documents model purpose, validation evidence, model selection, calibration, limitations, and intended use.
 
 ### Decision Card
+
 `reports/DECISION_CARD.md`
 
 Documents the cost-sensitive and capacity-aware decision policy.
 
 ### Interpretability Report
+
 `reports/INTERPRETABILITY_REPORT.md`
 
 Documents model interpretation evidence, including global and local explanations and their limitations.
 
 ### Ensemble Decision
+
 `reports/ENSEMBLE_DECISION.md`
 
 Documents the comparison between single models and ensemble candidates and explains why the final workflow retained Logistic Regression.
@@ -630,4 +645,18 @@ The notebooks should be executed in sequence:
 
 ---
 
+## Final Project Decision
 
+The final workflow retained **Logistic Regression** based on the forward OOF evidence.
+
+The final procedure combines:
+
+**Leakage-Aware Validation → Model Selection → Probability Calibration → Cost-Sensitive Threshold → 12% Review Capacity → Final Review Flags**
+
+The challenge batch produced:
+
+**300 review flags from 2,500 applications**
+
+while respecting the configured **12% review-capacity constraint**.
+
+Challenge labels were not available, so these challenge outputs represent **model-generated review decisions rather than final measured predictive performance**.
